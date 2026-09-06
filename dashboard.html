@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <h2>Dashboard</h2>
+        <p id="welcomeMsg">Welcome!</p>
+        <button id="logoutBtn">Logout</button>
+    </div>
+    <script>
+        const user = localStorage.getItem('loggedInUser');
+        if (!user) {
+            // Not logged in, redirect to login
+            window.location.href = 'login.html';
+        } else {
+            document.getElementById('welcomeMsg').textContent = `Welcome, ${user}!`;
+        }
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('loggedInUser');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
